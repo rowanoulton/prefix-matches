@@ -22,6 +22,10 @@
     "autocomplete",
     "object"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rowanoulton/prefix-matches.git"
+  },
   "author": "Rowan Oulton <rowan.oulton@gmail.com> (http://github.com/rowanoulton)",
   "license": "MIT"
 }
