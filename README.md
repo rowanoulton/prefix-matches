@@ -25,6 +25,14 @@ prefixMatches('w', {
 	watchCss: 'watch css'
 }) // returns ['watch javascript', 'watch css']
 
+prefixMatches('w', {
+	watch: {
+		js: 'watch javascript',
+		css: 'watch css'
+	},
+	build: 'build things'
+}) // returns ['watch javascript', 'watch css']
+
 prefixMatches('w.j', {
 	watch: {
 		js: 'watch javascript',

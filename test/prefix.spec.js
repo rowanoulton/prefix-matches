@@ -25,3 +25,17 @@ test('returns options for multiple prefixes', t => {
     }
   }), ['js', 'jsx'])
 })
+
+test('flattens results', t => {
+  t.deepEqual(prefix('w', {
+    watch: {
+      js: 'a',
+      css: 'b',
+      other: {
+        templates: 'c',
+        cocktails: 'd'
+      }
+    },
+    write: 'e'
+  }), ['a', 'b', 'c', 'd', 'e'])
+})
