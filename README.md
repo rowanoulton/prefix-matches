@@ -23,7 +23,7 @@ const prefixMatches = require('prefix-matches')
 prefixMatches('w', {
 	watchJs: 'watch javascript',
 	watchCss: 'watch css'
-}) // returns ['watch javascript', 'watch css']
+}) // => ['watch javascript', 'watch css']
 
 prefixMatches('w', {
 	watch: {
@@ -31,14 +31,14 @@ prefixMatches('w', {
 		css: 'watch css'
 	},
 	build: 'build things'
-}) // returns ['watch javascript', 'watch css']
+}) // => ['watch javascript', 'watch css']
 
 prefixMatches('w.j', {
 	watch: {
 		js: 'watch javascript',
 		css: 'watch css'
 	}
-}) // returns ['watch javascript']
+}) // => ['watch javascript']
 ```
 
 ## Why?
