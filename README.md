@@ -8,7 +8,7 @@ Find matching keys in a given object, for a given prefix string
 ## Installation
 
 	npm i --save prefix-matches
-	
+
 then, in your scripts:
 
 ```js
@@ -20,11 +20,13 @@ const prefixMatches = require('prefix-matches')
 ```js
 const prefixMatches = require('prefix-matches')
 
+// Resolves simple cases
 prefixMatches('w', {
 	watch: 'watch things',
 	build: 'build things'
 }) // => ['watch things']
 
+// Does not flatten result set
 prefixMatches('w', {
 	watch: {
 		js: 'watch javascript',
@@ -33,12 +35,26 @@ prefixMatches('w', {
 	build: 'build things'
 }) // => [{js: 'watch javascript', css: 'watch css'}]
 
+// Resolves nested prefixes
 prefixMatches('w.j', {
 	watch: {
 		js: 'watch javascript',
 		css: 'watch css'
+	},
+	write: {
+		js: 'write javascript'
 	}
-}) // => ['watch javascript']
+}) // => ['watch javascript', 'write javascript']
+
+// ... and so on
+prefixMatches('b.f.j', {
+	build: {
+		frontend: {
+			js: 'build javascript',
+			css: 'build css'
+		}
+	}
+}) // => ['build javascript']
 ```
 
 ## Why?
