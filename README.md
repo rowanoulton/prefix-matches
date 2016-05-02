@@ -43,7 +43,7 @@ prefixMatches('w.j', {
 
 ## Why?
 
-An attempt to provide better prefixing support for the [package-scripts](https://github.com/kentcdodds/p-s) project. 
+To attempt better prefixing support for the [package-scripts](https://github.com/kentcdodds/p-s) project.
 
 ## Tests
 
