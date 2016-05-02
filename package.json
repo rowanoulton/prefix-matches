@@ -1,0 +1,26 @@
+{
+  "name": "prefix-matches",
+  "version": "0.0.1",
+  "description": "Find matching keys in a given object, for a given prefix string",
+  "main": "prefix.js",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "is-object": "^1.0.1",
+    "starts-with": "^1.0.2"
+  },
+  "devDependencies": {
+    "ava": "^0.14.0"
+  },
+  "scripts": {
+    "test": "ava -v"
+  },
+  "keywords": [
+    "prefix",
+    "autocomplete",
+    "object"
+  ],
+  "author": "Rowan Oulton <rowan.oulton@gmail.com> (http://github.com/rowanoulton)",
+  "license": "MIT"
+}
