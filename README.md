@@ -31,7 +31,7 @@ prefixMatches('w', {
 		css: 'watch css'
 	},
 	build: 'build things'
-}) // => ['watch javascript', 'watch css']
+}) // => [{js: 'watch javascript', css: 'watch css'}]
 
 prefixMatches('w.j', {
 	watch: {
