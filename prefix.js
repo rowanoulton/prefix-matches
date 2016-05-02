@@ -1,5 +1,3 @@
-'use strict'
-
 const isObject = require('is-object')
 const startsWith = require('starts-with')
 
