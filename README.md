@@ -21,9 +21,9 @@ const prefixMatches = require('prefix-matches')
 const prefixMatches = require('prefix-matches')
 
 prefixMatches('w', {
-	watchJs: 'watch javascript',
-	watchCss: 'watch css'
-}) // => ['watch javascript', 'watch css']
+	watch: 'watch things',
+	build: 'build things'
+}) // => ['watch things']
 
 prefixMatches('w', {
 	watch: {
