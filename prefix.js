@@ -3,11 +3,11 @@
 var isObject = require('is-object')
 var startsWith = require('starts-with')
 
-var startsWithPrefix = (prefix, key) => {
+var startsWithPrefix = function (prefix, key) {
   return startsWith(key, prefix)
 }
 
-module.exports = (input, scripts) => {
+module.exports = function (input, scripts) {
   var prefixes = input.split('.')
   var startsWithFilter
   var isLastPrefix
@@ -26,12 +26,12 @@ module.exports = (input, scripts) => {
     for (var script of scripts) {
       keys = Object.keys(script)
 
-      matches = keys.filter(startsWithFilter).filter(key => {
+      matches = keys.filter(startsWithFilter).filter(function (key) {
         // Ignore non-objects unless we're at the last level
         return isLastPrefix || isObject(script[key])
       })
 
-      results = results.concat(matches.map(match => {
+      results = results.concat(matches.map(function (match) {
         return script[match]
       }))
     }
