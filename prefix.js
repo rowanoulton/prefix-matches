@@ -1,29 +1,29 @@
 'use strict'
 
-const isObject = require('is-object')
-const startsWith = require('starts-with')
+var isObject = require('is-object')
+var startsWith = require('starts-with')
 
-const startsWithPrefix = (prefix, key) => {
+var startsWithPrefix = (prefix, key) => {
   return startsWith(key, prefix)
 }
 
 module.exports = (input, scripts) => {
-  const prefixes = input.split('.')
-  let startsWithFilter
-  let isLastPrefix
-  let matches
-  let results
-  let keys
+  var prefixes = input.split('.')
+  var startsWithFilter
+  var isLastPrefix
+  var matches
+  var results
+  var keys
 
   // Ensure script begins as an array for interal loop
   if (!Array.isArray(scripts)) scripts = [scripts]
 
-  for (let i = 0; i < prefixes.length; i++) {
+  for (var i = 0; i < prefixes.length; i++) {
     startsWithFilter = startsWithPrefix.bind(null, prefixes[i])
     isLastPrefix = i === (prefixes.length - 1)
     results = []
 
-    for (let script of scripts) {
+    for (var script of scripts) {
       keys = Object.keys(script)
 
       matches = keys.filter(startsWithFilter).filter(key => {
