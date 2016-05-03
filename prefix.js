@@ -23,16 +23,16 @@ module.exports = function (input, scripts) {
     isLastPrefix = i === (prefixes.length - 1)
     results = []
 
-    for (var script of scripts) {
-      keys = Object.keys(script)
+    for (var j = 0; j < scripts.length; j++) {
+      keys = Object.keys(scripts[j])
 
       matches = keys.filter(startsWithFilter).filter(function (key) {
         // Ignore non-objects unless we're at the last level
-        return isLastPrefix || isObject(script[key])
+        return isLastPrefix || isObject(scripts[j][key])
       })
 
       results = results.concat(matches.map(function (match) {
-        return script[match]
+        return scripts[j][match]
       }))
     }
 
