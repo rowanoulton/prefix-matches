@@ -24,7 +24,7 @@ const prefixMatches = require('prefix-matches')
 prefixMatches('w', {
 	watch: 'watch things',
 	build: 'build things'
-}) // => ['watch things']
+}) // => [{ watch: 'watch things']
 
 // Does not flatten result set
 prefixMatches('w', {
@@ -33,7 +33,7 @@ prefixMatches('w', {
 		css: 'watch css'
 	},
 	build: 'build things'
-}) // => [{js: 'watch javascript', css: 'watch css'}]
+}) // => [{ watch: { 'watch javascript', css: 'watch css' }}]
 
 // Resolves nested prefixes
 prefixMatches('w.j', {
@@ -44,7 +44,7 @@ prefixMatches('w.j', {
 	write: {
 		js: 'write javascript'
 	}
-}) // => ['watch javascript', 'write javascript']
+}) // => [{ 'watch.js': 'watch javascript' }, { 'write.js': 'write javascript' }]
 
 // ... and so on
 prefixMatches('b.f.j', {
@@ -54,7 +54,7 @@ prefixMatches('b.f.j', {
 			css: 'build css'
 		}
 	}
-}) // => ['build javascript']
+}) // => [{ 'build.frontend.js': 'build javascript' }]
 ```
 
 ## Why?

@@ -6,14 +6,14 @@ test('returns an array', t => {
 })
 
 test('returns empty array if no matches', t => {
-  t.is(prefix('w', {ignore: 'a'}).length, 0)
-  t.is(prefix('a.b', {ignore: 'a', actual: { ignore: 'b'}}).length, 0)
+  t.is(prefix('w', { ignore: 'a' }).length, 0)
+  t.is(prefix('a.b', { ignore: 'a', actual: { ignore: 'b' } }).length, 0)
 })
 
 test('resolves single prefixes', t => {
-  t.deepEqual(prefix('w', {watch: 'a'}), ['a'])
-  t.deepEqual(prefix('w', {watch: 'a', wait: 'b'}), ['a', 'b'])
-  t.deepEqual(prefix('w', {watch: 'a', wait: 'b', ignore: 'c'}), ['a', 'b'])
+  t.deepEqual(prefix('w', { watch: 'a' }), [{ watch: 'a' }])
+  t.deepEqual(prefix('w', { watch: 'a', wait: 'b' }), [{ watch: 'a' }, { wait: 'b' }])
+  t.deepEqual(prefix('w', { watch: 'a', wait: 'b', ignore: 'c' }), [{ watch: 'a' }, { wait: 'b' }])
 })
 
 test('resolves nested prefixes', t => {
@@ -25,10 +25,14 @@ test('resolves nested prefixes', t => {
     write: {
       js: 'write javascript'
     }
-  }), ['watch javascript', 'write javascript'])
+  }), [{
+    'watch.js': 'watch javascript'
+  }, {
+    'write.js': 'write javascript'
+  }])
 })
 
-test ('resolves _really_ nested prefixes', t => {
+test('resolves _really_ nested prefixes', t => {
   t.deepEqual(prefix('b.f.j', {
     build: {
       frontend: {
@@ -36,7 +40,7 @@ test ('resolves _really_ nested prefixes', t => {
         css: 'build css'
       }
     }
-  }), ['build javascript'])
+  }), [{ 'build.frontend.js': 'build javascript' }])
 })
 
 test('does not flatten results', t => {
@@ -46,5 +50,5 @@ test('does not flatten results', t => {
       css: 'watch css'
     },
     build: 'build things'
-  }), [{js: 'watch javascript', css: 'watch css'}])
+  }), [{ watch: { js: 'watch javascript', css: 'watch css' } }])
 })
