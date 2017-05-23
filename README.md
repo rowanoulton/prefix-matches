@@ -24,7 +24,7 @@ const prefixMatches = require('prefix-matches')
 prefixMatches('w', {
 	watch: 'watch things',
 	build: 'build things'
-}) // => [{ watch: 'watch things']
+}) // => [{ watch: 'watch things' }]
 
 // Does not flatten result set
 prefixMatches('w', {
