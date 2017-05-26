@@ -10,6 +10,22 @@ test('returns empty array if no matches', t => {
   t.is(prefix('a.b', { ignore: 'a', actual: { ignore: 'b' } }).length, 0)
 })
 
+test('returns correct property chain if result is object', t => {
+  t.deepEqual(prefix('t.j', {
+    test: {
+      js: {
+        default: 'test js',
+        watch: 'test watch js'
+      }
+    }
+  }), [{
+    'test.js': {
+      default: 'test js',
+      watch: 'test watch js'
+    }
+  }])
+})
+
 test('resolves single prefixes', t => {
   t.deepEqual(prefix('w', { watch: 'a' }), [{ watch: 'a' }])
   t.deepEqual(prefix('w', { watch: 'a', wait: 'b' }), [{ watch: 'a' }, { wait: 'b' }])

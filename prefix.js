@@ -24,8 +24,8 @@ function searchForPrefix(currentScripts, depth, prefixes, propertyChain, results
         result[propertyChain.join('.')] = currentScripts[key]
         results.push(result)
       }
+      propertyChain.pop()
     }
-    propertyChain.pop()
   })
   if (depth === 0) {
     return results
