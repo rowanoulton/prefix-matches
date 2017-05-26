@@ -1,6 +1,6 @@
 {
   "name": "prefix-matches",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Find matching keys in a given object, for a given prefix string",
   "main": "prefix.js",
   "directories": {
