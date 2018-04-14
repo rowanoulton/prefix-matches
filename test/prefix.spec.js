@@ -68,3 +68,12 @@ test('does not flatten results', t => {
     build: 'build things'
   }), [{ watch: { js: 'watch javascript', css: 'watch css' } }])
 })
+
+test('sorts full match first', t => {
+  t.deepEqual(prefix('foo.bar', {
+    foo: {
+      'bar-baz': 'echo "foo.bar-baz"',
+      bar: 'echo "foo.bar"',
+    }
+  }), [{ 'foo.bar': 'echo "foo.bar"' }, { 'foo.bar-baz': 'echo "foo.bar-baz"' }])
+})

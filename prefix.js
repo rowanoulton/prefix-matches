@@ -21,8 +21,16 @@ function searchForPrefix(currentScripts, depth, prefixes, propertyChain, results
       if (!isLastPrefix && isObject(currentScripts[key])) {
         searchForPrefix(currentScripts[key], depth + 1, prefixes, propertyChain, results)
       } else {
-        result[propertyChain.join('.')] = currentScripts[key]
-        results.push(result)
+        var resultKey = propertyChain.join('.')
+        result[resultKey] = currentScripts[key]
+
+        if (resultKey === prefixes.join('.')) {
+          // if we have full match, place it as a first result
+          // because it has biggest relevance
+          results.unshift(result)
+        } else {
+          results.push(result)
+        }
       }
       propertyChain.pop()
     }
